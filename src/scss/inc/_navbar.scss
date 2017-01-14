@@ -1,0 +1,15 @@
+/**
+ * Bootstrap navbar overrides
+ */
+.navbar {
+	&.navbar-inverse {
+		background-color: $brand-primary;
+		border: none;
+	}
+	.navbar-brand {
+		padding: 0 0 0 20px;
+	}
+	.logo {
+		max-height: 100%;
+	}
+}
