@@ -5,9 +5,9 @@
 		.module('app')
 		.controller('CarController', CarController);
 
-	CarController.$inject = ['GarageService', 'ModalService'];
+	CarController.$inject = ['GarageService', 'ModalService', '$state'];
 
-	function CarController(GarageService, ModalService) {
+	function CarController(GarageService, ModalService, $state) {
 
 		/**
 		 * Me.
@@ -44,6 +44,9 @@
 			ModalService.open({
 				title: 'Sucesso!',
 				message: res.message,
+				afterClose: function() {
+					$state.go('home');
+				}
 			})
 		}
 

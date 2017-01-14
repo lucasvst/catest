@@ -17,7 +17,7 @@
 		/**
 		 * Service properties.
 		 */
-		svc.modal;
+		svc.modal = {};
 
 		/**
 		 * Service methods.
@@ -30,8 +30,7 @@
 		 */
 		function open(modal) {
 
-			svc.modal.title = modal.title;
-			svc.modal.message = modal.message;
+			angular.extend(svc.modal, modal);
 
 			svc.modal.instance = $uibModal.open({
 				animation: false,
@@ -45,6 +44,11 @@
 		function close() {
 
 			svc.modal.instance.close();
+
+			if (svc.modal.afterClose) {
+				svc.modal.afterClose()
+			}
+
 			init();
 		}
 
@@ -55,7 +59,8 @@
 			svc.modal = {
 				instance: undefined,
 				title: '',
-				message: ''
+				message: '',
+				afterClose: undefined
 			};
 		}
 
