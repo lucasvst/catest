@@ -1,11 +1,33 @@
 <div ui-view="navbar"></div>
 
 <section class="container">
-	<div class="panel panel-default">
-	    <div class="panel-body">
 
-	    	<car-list cars="carCtrl.cars"></car-list>
+	<div class="row">
+		<div class="col-sm-8">
+			<!-- New Car -->
+			<a class="btn btn-success">Novo Carro</a>
+		</div>
 
-	    </div>
+		<div class="col-sm-4">
+			<div class="input-group">
+				<!-- Car Filter -->
+				<input type="text" class="form-control" placeholder="Pesquisar">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+				</span>
+			</div>
+		</div>
 	</div>
+
+	<div class="row top-buffer">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+			    <div class="panel-body">
+			    	<!-- Car list -->
+			    	<car-list cars="carCtrl.cars"></car-list>
+			    </div>
+			</div>
+		</div>
+	</div>
+
 </section>
