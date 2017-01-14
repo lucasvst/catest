@@ -26,7 +26,7 @@
 				},
 			})
 			.state('add', {
-				url:'/add',
+				url:'/novo',
 				views: {
 					'': {
 						templateUrl: 'views/car/add.html',
