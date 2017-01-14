@@ -17,9 +17,13 @@
 			.state('home', {
 				url:'/',
 				views: {
-					'': { templateUrl: 'views/home/main.html' },
+					'': {
+						templateUrl: 'views/home/main.html',
+						controller: 'CarController as carCtrl',
+
+					},
 					'navbar@home': { templateUrl: 'views/common/navbar.html' }
-				}
+				},
 			})
 	}
 })(window.angular);

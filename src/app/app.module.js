@@ -2,7 +2,9 @@
   "use strict";
 
   angular.module('app', [
-  	'ui.router'
+  	'ui.router',
+  	'ui.utils.masks',
+  	'ngTable',
   ])
 
 })(window.angular);

@@ -1,0 +1,18 @@
+<table ng-table="tableParams" class="table" show-filter="false">
+    <tr ng-repeat="car in $data">
+        <td data-title="'Placa'" sortable="'placa'">{{ car.placa }}</td>
+        <td data-title="'Modelo'">{{ car.modelo }}</td>
+        <td data-title="'Marca'">{{ car.marca }}</td>
+        <td data-title="'Foto'">
+            <a ng-if="car.imagem" href="{{ car.imagem }}">Imagem</a>
+            <span ng-if="!car.imagem">Sem foto</a>
+        </td>
+        <td data-title="'Combustível'">{{ car.combustivel }}</td>
+        <td data-title="'Valor'">{{ car.valor|currency:'R$ ' }}</td>
+        <!-- <td data-title="'Ações'">
+            <a href="/#/cars/{{ car.$hashkey }}" class="btn btn-xs btn-info">view</a>
+            <a href="/#/cars/update/{{ job.$hashkey }}" class="btn btn-xs btn-primary">update</a>
+            <button data-ng-click="remove(car)" class="btn btn-xs btn-danger">delete</button>
+        </td> -->
+    </tr>
+</table>
