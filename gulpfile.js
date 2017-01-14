@@ -4,12 +4,17 @@
 const SOURCES = {
   sass: ['./src/scss/main.scss'],
   vendorFonts: ['./node_modules/bootstrap/fonts/**'],
-  vendorCss: ['./node_modules/bootstrap/dist/css/bootstrap.min.css'],
+  vendorCss: [
+    './node_modules/bootstrap/dist/css/bootstrap.min.css',
+    './node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css'
+  ],
   vendorJs: [
     './node_modules/angular/angular.js',
     './node_modules/angular-ui-router/release/angular-ui-router.js',
     './node_modules/angular-input-masks/releases/angular-input-masks-standalone.min.js',
-    './node_modules/angular-table/dist/angular-table.js'
+    './node_modules/angular-table/dist/angular-table.js',
+    './node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js',
+    './node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js'
   ],
   images: ['./src/img/**'],
   scripts: ['./src/app/**/*.js'],

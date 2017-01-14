@@ -3,6 +3,7 @@
     "angular": "^1.6.0",
     "angular-input-masks": "^2.5.0",
     "angular-table": "git+https://github.com/samu/angular-table.git",
+    "angular-ui-bootstrap": "^2.4.0",
     "angular-ui-router": "^0.3.2",
     "bootstrap": "^3.3.7"
   },

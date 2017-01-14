@@ -1,0 +1,62 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+
+        <form class="form" ng-submit="carCtrl.add(car)">
+            <fieldset>
+
+                <legend>Novo Carro</legend>
+
+                <div class="form-group">
+                    <label for="placa" class="control-label">Placa</label>
+                    <input type="text" class="form-control" id="placa" placeholder="Número da placa" required data-ng-model="car.placa" ui-br-car-plate-mask>
+                </div>
+
+                <div class="form-group">
+                    <label for="modelo" class="control-label">Modelo</label>
+                    <input type="text" class="form-control" id="modelo" placeholder="Nome do Modelo" required data-ng-model="car.modelo">
+                </div>
+
+                <div class="form-group">
+                    <label for="marca" class="control-label">Marca</label>
+                    <input type="text" class="form-control" id="marca" placeholder="Nome da Marca" required data-ng-model="car.marca">
+                </div>
+
+                <div class="form-group">
+                    <label for="imagem" class="control-label">Foto</label>
+                    <input type="text" class="form-control" id="imagem" placeholder="Url da imagem" required data-ng-model="car.imagem">
+                </div>
+
+                <div class="form-group">
+                    <label for="valor" class="control-label">Valor</label>
+                    <input type="text" class="form-control" id="valor" placeholder="Valor do Veículo" required data-ng-model="car.valor" ui-money-mask>
+                </div>
+
+                <div class="form-group">
+                    <label for="combustivel" class="control-label">Combustível</label>
+                    <select
+                        type="text"
+                        class="form-control"
+                        id="combustivel"
+                        required
+                        data-ng-model="car.combustivel"
+                        ng-options="fuel as fuel for fuel in fuelList"
+                    >
+                        <option value="">Selecione um Combustível</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <a ui-sref="home" class="btn btn-danger btn-block">Voltar</a>
+                        </div>
+                        <div class="col-xs-10">
+                            <button type="submit" class="btn btn-success btn-block">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+
+    </div>
+</div>

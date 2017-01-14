@@ -18,11 +18,22 @@
 				url:'/',
 				views: {
 					'': {
-						templateUrl: 'views/home/main.html',
+						templateUrl: 'views/car/main.html',
 						controller: 'CarController as carCtrl',
 
 					},
 					'navbar@home': { templateUrl: 'views/common/navbar.html' }
+				},
+			})
+			.state('add', {
+				url:'/add',
+				views: {
+					'': {
+						templateUrl: 'views/car/add.html',
+						controller: 'CarController as carCtrl',
+
+					},
+					'navbar@add': { templateUrl: 'views/common/navbar.html' }
 				},
 			})
 	}

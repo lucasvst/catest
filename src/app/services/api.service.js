@@ -3,20 +3,31 @@
 
 	angular
 		.module('app')
-		.factory('ApiService', ApiService);
+		.service('ApiService', ApiService);
 
 	ApiService.$inject = ['API', '$http'];
 
 	function ApiService (API, $http) {
 
-		var svc = {};
+		/**
+		 * Me.
+		 */
+		var svc = this;
 
+		/**
+		 * Service methods.
+		 */
 		svc.getCars = getCars;
 		function getCars() {
 			return $http.get(API.cars);
 		}
 
-		return svc;
+		/**
+		 * angular.service returns a NEW INSTANCE,
+		 * instead function return, like angular.factory.
+		 * This way there's no need to return anything, once
+		 * everything appended to 'this' will be available at the instance.
+		 */
 	}
 
 })(window.angular);

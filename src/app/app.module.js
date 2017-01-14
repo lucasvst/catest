@@ -4,7 +4,8 @@
   angular.module('app', [
   	'ui.router',
   	'ui.utils.masks',
-  	'angular-table'
+  	'angular-table',
+  	'ui.bootstrap'
   ])
 
 })(window.angular);
