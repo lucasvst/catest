@@ -9,7 +9,7 @@ const SOURCES = {
     './node_modules/angular/angular.js',
     './node_modules/angular-ui-router/release/angular-ui-router.js',
     './node_modules/angular-input-masks/releases/angular-input-masks-standalone.min.js',
-    './node_modules/ng-table/bundles/ng-table.js',
+    './node_modules/angular-table/dist/angular-table.js'
   ],
   images: ['./src/img/**'],
   scripts: ['./src/app/**/*.js'],

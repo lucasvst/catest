@@ -5,29 +5,31 @@
 	.module('app')
 	.directive('carList', carList)
 
-	carList.$inject = ['NgTableParams', 'GarageService'];
+	carList.$inject = ['$filter'];
 
-	function carList(NgTableParams, GarageService) {
+	function carList($filter) {
 
 		return {
 
 			restrict: 'E',
 			templateUrl: 'views/directives/car-list/main.html',
 			scope: {
-				cars: '='
+				filter: '=',
+				items: '='
 			},
 
-			link: function(scope, elem, attrs) {
+			link: function($scope, elem, attrs) {
 
-				scope.tableParams = new NgTableParams({}, {
-					counts: [],
-					getData: function(params) {
-						return GarageService.getAll().then(function(cars) {
-							params.total(cars.length);
-							return cars;
-						});
-					}
-				});
+				$scope.filteredItems = $scope.items;
+			},
+
+			controller: function($scope) {
+
+				$scope.$watch('filter', changeFilter)
+
+				function changeFilter(value) {
+					$scope.filteredItems = $filter("filter")($scope.items, $scope.filter);
+				}
 			}
 		};
 	}

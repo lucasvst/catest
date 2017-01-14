@@ -4,7 +4,7 @@
   angular.module('app', [
   	'ui.router',
   	'ui.utils.masks',
-  	'ngTable',
+  	'angular-table'
   ])
 
 })(window.angular);

@@ -1,18 +1,37 @@
-<table ng-table="tableParams" class="table" show-filter="false">
-    <tr ng-repeat="car in $data">
-        <td data-title="'Placa'" sortable="'placa'">{{ car.placa }}</td>
-        <td data-title="'Modelo'">{{ car.modelo }}</td>
-        <td data-title="'Marca'">{{ car.marca }}</td>
-        <td data-title="'Foto'">
-            <a ng-if="car.imagem" href="{{ car.imagem }}">Imagem</a>
-            <span ng-if="!car.imagem">Sem foto</a>
-        </td>
-        <td data-title="'Combustível'">{{ car.combustivel }}</td>
-        <td data-title="'Valor'">{{ car.valor|currency:'R$ ' }}</td>
-        <!-- <td data-title="'Ações'">
-            <a href="/#/cars/{{ car.$hashkey }}" class="btn btn-xs btn-info">view</a>
-            <a href="/#/cars/update/{{ job.$hashkey }}" class="btn btn-xs btn-primary">update</a>
-            <button data-ng-click="remove(car)" class="btn btn-xs btn-danger">delete</button>
-        </td> -->
-    </tr>
-</table>
+<div class="panel panel-default">
+    <div class="panel-body">
+
+        <table
+            class="table"
+            at-table
+            at-paginated
+            at-list="filteredItems"
+            at-config="config"
+        >
+            <thead></thead>
+            <tbody>
+                <tr>
+                    <td at-attribute="placa" at-title="Placa">{{ item.placa }}</td>
+                    <td at-attribute="modelo" at-title="Modelo">{{ item.modelo }}</td>
+                    <td at-attribute="marca" at-title="Marca">{{ item.marca }}</td>
+                    <td at-attribute="imagem" at-title="Foto">
+                        <a ng-if="item.imagem" href="{{ item.imagem }}">Imagem</a>
+                        <span ng-if="!item.imagem">Sem foto</span>
+                    </td>
+                    <td at-attribute="combustivel"  at-title="Combustível">{{ item.combustivel }}</td>
+                    <td at-attribute="valor" at-title="Valor">{{ item.valor|currency:'R$ ' }}</td>
+                    <td at-title="Ações">
+                        <a href="/#/cars/{{ car.$hashkey }}" class="btn btn-xs btn-info">view</a>
+                        <a href="/#/cars/update/{{ job.$hashkey }}" class="btn btn-xs btn-primary">update</a>
+                        <button data-ng-click="remove(car)" class="btn btn-xs btn-danger">delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<div class="text-center">
+    <at-pagination at-list="filteredItems" at-config="config"></at-pagination>
+</div>
