@@ -3,7 +3,7 @@
  */
 const SOURCES = {
   sass: ['./src/scss/main.scss'],
-  vendorFonts: [],
+  vendorFonts: ['./node_modules/bootstrap/fonts/**'],
   vendorCss: ['./node_modules/bootstrap/dist/css/bootstrap.min.css'],
   vendorJs: [
     './node_modules/angular/angular.js',
