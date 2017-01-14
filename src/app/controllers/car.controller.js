@@ -42,13 +42,16 @@
 		 */
 		function successAddCbk(res) {
 			ModalService.open({
-				title: 'Título',
-				message: 'Mensagem',
+				title: 'Sucesso!',
+				message: res.message,
 			})
 		}
 
 		function errorAddCbk(res) {
-			console.log(res)
+			ModalService.open({
+				title: 'Erro!',
+				message: res.message,
+			})
 		}
 
 		/**
