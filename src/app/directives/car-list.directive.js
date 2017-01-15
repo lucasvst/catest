@@ -26,7 +26,16 @@
 				$scope.filteredItems = $scope.items;
 				$scope.config = {
 					itemsPerPage: 5,
-					fillLastPage: false
+					fillLastPage: false,
+					maxPages: 5,
+					paginatorLabels: {
+						first: "‹‹‹",
+						last: "›››",
+						jumpAhead: "››",
+						jumpBack: "‹‹",
+						stepAhead: "›",
+						stepBack: "‹",
+					}
 				}
 			},
 
