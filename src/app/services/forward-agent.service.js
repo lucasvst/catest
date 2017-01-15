@@ -19,6 +19,7 @@
 		 */
 		svc.toApi = toApi;
 		svc.toView = toView;
+		svc.validate = validate;
 
 		/**
 		 * Public functions (exposed by methods).
@@ -37,6 +38,13 @@
 				parts = PATTERN.exec(_string);
 
 			return parts[1] + parts[2];
+		}
+
+		function validate(_string) {
+
+			var PATTERN = CAR_PLATE_PATTERN;
+
+			return PATTERN.test(_string);
 		}
 
 		/**

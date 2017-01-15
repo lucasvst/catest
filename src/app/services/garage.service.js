@@ -67,7 +67,13 @@
 
 		function persist(car) {
 
-			car.placa = ForwardAgent.toApi(car.placa);
+			var validation = validate(car);
+
+			if ( ! validation.status) {
+				var defer = $q.defer();
+				defer.reject(validation);
+				return defer.promise;
+			}
 
 			if ( ! car.hasOwnProperty('id')) {
 				return add(car);
@@ -78,20 +84,16 @@
 
 		function add(car) {
 
-			var defer = $q.defer(),
-				validation = validate(car);
+			var defer = $q.defer();
 
-			if ( ! validation.status) {
-				defer.reject(validation.error);
-				return defer.promise;
-			}
+			car.placa = ForwardAgent.toApi(car.placa);
+			car.id = md5.createHash(car.placa);
 
 			/**
 			 * Here should be the $http or equivalent integration. Only for test
 			 * purposes the application will ADD the item to the reference array
 			 * and continue without persist this state.
 			 */
-			car.id = md5.createHash(car.placa);
 			svc.cars.push(car);
 			var asyncRes = {
 				status: true,
@@ -105,20 +107,15 @@
 		function update(car) {
 
 			var defer = $q.defer(),
-				validation = validate(car);
+				existent = getById(car.id, svc.cars);
 
-			if ( ! validation.status) {
-				defer.reject(validation.error);
-				return defer.promise;
-			}
+			angular.extend(existent, car)
 
 			/**
 			 * Here should be the $http or equivalent integration. Only for test
 			 * purposes the application will UPDATE the item to the reference array
 			 * and continue without persist this state.
 			 */
-			var existent = getById(car.id, svc.cars);
-			angular.extend(existent, car)
 			var asyncRes = {
 				status: true,
 				message: 'Veículo atualizado com sucesso!'
@@ -161,17 +158,19 @@
 		 */
 		function validate(car) {
 
-			/**
-			 * There's no business rule, validation mock
-			 * only for test purposes. Normally this is an
-			 * important and required step in a real world application.
-			 *
-			 * I could pass an objet like
-			 * { status: false, message: 'Validation fails at field ...' }
-			 */
 			var validation = {
 				status: true
+			};
+
+			/**
+			 * Validate Car Plate.
+			 */
+			var carPlateIsValid = ForwardAgent.validate(car.placa);
+			if ( ! carPlateIsValid) {
+				validation.status = false;
+				validation.message = 'Formato de Placa Inválida!';
 			}
+
 			return validation;
 		}
 
