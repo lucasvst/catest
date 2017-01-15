@@ -1,0 +1,12 @@
+/**
+ * Bootstrap table overrides
+ */
+.table {
+	&.table-bordered {
+		td,
+		th {
+			border: none;
+			border-bottom: 1px solid $neutral-base-light;
+		}
+	}
+}

@@ -1,34 +1,30 @@
-<div class="panel panel-default">
-    <div class="panel-body">
-
-        <table
-            class="table"
-            at-table
-            at-paginated
-            at-list="filteredItems"
-            at-config="config"
-        >
-            <thead></thead>
-            <tbody>
-                <tr>
-                    <td at-attribute="placa" at-title="Placa">{{ item.placa }}</td>
-                    <td at-attribute="modelo" at-title="Modelo">{{ item.modelo }}</td>
-                    <td at-attribute="marca" at-title="Marca">{{ item.marca }}</td>
-                    <td at-attribute="imagem" at-title="Foto">
-                        <a ng-if="item.imagem" data-ng-click="image(item)">Imagem</a>
-                        <span ng-if="!item.imagem">Sem foto</span>
-                    </td>
-                    <td at-attribute="combustivel"  at-title="Combustível">{{ item.combustivel }}</td>
-                    <td at-attribute="valor" at-title="Valor">{{ item.valor|currency:'R$ ' }}</td>
-                    <td at-title="Ações">
-                        <button data-ng-click="update(item)" class="btn btn-xs btn-primary">Editar</button>
-                        <button data-ng-click="remove(item)" class="btn btn-xs btn-danger">Remover</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-    </div>
+<div class="table-responsive">
+    <table
+        class="table table-hover table-bordered"
+        at-table
+        at-paginated
+        at-list="filteredItems"
+        at-config="config"
+    >
+        <thead></thead>
+        <tbody>
+            <tr>
+                <td at-attribute="placa" at-title="Placa">{{ item.placa }}</td>
+                <td at-attribute="modelo" at-title="Modelo">{{ item.modelo }}</td>
+                <td at-attribute="marca" at-title="Marca">{{ item.marca }}</td>
+                <td at-attribute="imagem" at-title="Foto">
+                    <a ng-if="item.imagem" data-ng-click="image(item)">Imagem</a>
+                    <span ng-if="!item.imagem">Sem foto</span>
+                </td>
+                <td at-attribute="combustivel"  at-title="Combustível">{{ item.combustivel }}</td>
+                <td at-attribute="valor" at-title="Valor">{{ item.valor|currency:'R$ ' }}</td>
+                <td at-title="Ações">
+                    <button data-ng-click="update(item)" class="btn btn-xs btn-primary">Editar</button>
+                    <button data-ng-click="remove(item)" class="btn btn-xs btn-danger">Remover</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <div class="text-center">
