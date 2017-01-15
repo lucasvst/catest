@@ -35,7 +35,6 @@
 			svc.modal.instance = $uibModal.open({
 				animation: false,
 				templateUrl: '/views/common/modal.html',
-				size: 'sm',
 				backdrop: false,
 				controller: 'ModalController as modalCtrl'
 			});

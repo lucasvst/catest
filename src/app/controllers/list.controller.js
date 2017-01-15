@@ -26,6 +26,7 @@
 		vm.setCarFilter = setCarFilter;
 		vm.remove = remove;
 		vm.update = update;
+		vm.showImage = showImage;
 
 		/**
 		 * Public functions (exposed by methods).
@@ -41,6 +42,13 @@
 
 		function update(car) {
 			$state.go('update', { id: car.id })
+		}
+
+		function showImage(car) {
+			ModalService.open({
+				title: car.modelo,
+				image: car.imagem
+			})
 		}
 
 		/**

@@ -17,7 +17,8 @@
 				filter: '=',
 				items: '=',
 				remove: '=',
-				update: '='
+				update: '=',
+				image: '='
 			},
 
 			link: function($scope, elem, attrs) {

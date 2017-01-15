@@ -19,6 +19,7 @@
 		 */
 		vm.title = ModalService.modal.title;
 		vm.message = ModalService.modal.message;
+		vm.image = ModalService.modal.image;
 
 		/**
 		 * Controller methods.
