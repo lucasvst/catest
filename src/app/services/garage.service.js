@@ -5,9 +5,9 @@
 		.module('app')
 		.factory('GarageService', GarageService);
 
-	GarageService.$inject = ['ApiService', '$q', 'md5'];
+	GarageService.$inject = ['ApiService', 'ForwardAgent', '$q', 'md5'];
 
-	function GarageService(ApiService, $q, md5) {
+	function GarageService(ApiService, ForwardAgent, $q, md5) {
 
 		/**
 		 * Me.
@@ -68,6 +68,8 @@
 		}
 
 		function persist(car) {
+
+			car.placa = ForwardAgent.normalizeCarPlate(car.placa);
 
 			if ( ! car.hasOwnProperty('id')) {
 				return add(car);
