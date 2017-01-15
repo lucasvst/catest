@@ -19,7 +19,6 @@
 		 */
 		vm.cars = GarageService.cars;
 		vm.carFilter;
-		vm.carsSelected = [];
 
 		/**
 		 * Controller methods.
@@ -28,7 +27,7 @@
 		vm.remove = remove;
 		vm.update = update;
 		vm.showImage = showImage;
-		vm.selectedItems = selectedItems;
+		vm.selectedItemsCount = selectedItemsCount;
 
 		/**
 		 * Public functions (exposed by methods).
@@ -37,13 +36,13 @@
 			vm.carFilter = query;
 		}
 
-		function remove(cars) {
-			GarageService.remove(cars).then(successRemoveCbk, errorRemoveCbk);
+		function remove() {
+			GarageService.remove(selectedItems()).then(successRemoveCbk, errorRemoveCbk);
 
 		}
 
-		function update(car) {
-			$state.go('update', { id: car.id })
+		function update() {
+			$state.go('update', { id: selectedItems()[0].id })
 		}
 
 		function showImage(car) {
@@ -53,10 +52,8 @@
 			})
 		}
 
-		function selectedItems() {
-			return vm.cars.filter(function(car) {
-				return car.selected;
-			}).length;
+		function selectedItemsCount() {
+			return selectedItems().length;
 		}
 
 		/**
@@ -76,6 +73,12 @@
 			ModalService.open({
 				title: 'Erro!',
 				message: res.message,
+			})
+		}
+
+		function selectedItems() {
+			return vm.cars.filter(function(car) {
+				return car.selected;
 			})
 		}
 
