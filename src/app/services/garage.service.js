@@ -70,7 +70,7 @@
 
 		function persist(car) {
 
-			car.placa = ForwardAgent.normalizeCarPlate(car.placa);
+			car.placa = ForwardAgent.toApi(car.placa);
 
 			if ( ! car.hasOwnProperty('id')) {
 				return add(car);

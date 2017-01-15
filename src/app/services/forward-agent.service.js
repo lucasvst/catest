@@ -5,9 +5,9 @@
 		.module('app')
 		.factory('ForwardAgent', ForwardAgent);
 
-	ForwardAgent.$inject = [];
+	ForwardAgent.$inject = ['CAR_PLATE_PATTERN'];
 
-	function ForwardAgent() {
+	function ForwardAgent(CAR_PLATE_PATTERN) {
 
 		/**
 		 * Me.
@@ -17,17 +17,26 @@
 		/**
 		 * Service methods.
 		 */
-		svc.normalizeCarPlate = normalizeCarPlate;
+		svc.toApi = toApi;
+		svc.toView = toView;
 
 		/**
 		 * Public functions (exposed by methods).
 		 */
-		function normalizeCarPlate(_string) {
+		function toApi(_string) {
 
-			var PATTERN = /^(\w\w\w)-?(\d\d\d\d)$/,
+			var PATTERN = CAR_PLATE_PATTERN,
 				parts = PATTERN.exec(_string);
 
 			return parts[1] + '-' + parts[2];
+		}
+
+		function toView(_string) {
+
+			var PATTERN = CAR_PLATE_PATTERN,
+				parts = PATTERN.exec(_string);
+
+			return parts[1] + parts[2];
 		}
 
 		/**

@@ -27,7 +27,7 @@
                         <label class="checkbox" for="checkbox-{{ $index }}"></label>
                     </span>
                 </td>
-                <td at-attribute="placa" at-title="Placa">{{ item.placa }}</td>
+                <td at-attribute="placa" at-title="Placa">{{ item.placa|carPlateView }}</td>
                 <td at-attribute="modelo" at-title="Modelo">{{ item.modelo }}</td>
                 <td at-attribute="marca" at-title="Marca">{{ item.marca }}</td>
                 <td at-attribute="imagem" at-title="Foto">
