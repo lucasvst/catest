@@ -13,9 +13,7 @@
 
 			restrict: 'E',
 			templateUrl: '/views/directives/car-form.html',
-			scope: {
-				item: '=',
-			},
+			scope: {},
 
 			link: function($scope, elem, attrs) {
 				$scope.fuelList = FUEL_LIST;

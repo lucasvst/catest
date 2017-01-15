@@ -54,14 +54,11 @@
 
 		function get(id) {
 
-			var defer = $q.defer();
+			var defer = $q.defer(),
+				existentCar = getById(id, svc.cars);
 
-			var cars = svc.cars.filter(function(car) {
-				return car.id == id;
-			});
-
-			if (cars.length) {
-				svc.car = cars[0];
+			if (existentCar) {
+				svc.car = angular.copy(existentCar);
 			}
 
 			defer.resolve(svc.car);
@@ -94,6 +91,7 @@
 			 * purposes the application will ADD the item to the reference array
 			 * and continue without persist this state.
 			 */
+			car.id = md5.createHash(car.placa);
 			svc.cars.push(car);
 			var asyncRes = {
 				status: true,
@@ -119,7 +117,8 @@
 			 * purposes the application will UPDATE the item to the reference array
 			 * and continue without persist this state.
 			 */
-			 /* do nothing, already updated at reference array */
+			var existent = getById(car.id, svc.cars);
+			angular.extend(existent, car)
 			var asyncRes = {
 				status: true,
 				message: 'Veículo atualizado com sucesso!'
@@ -174,6 +173,16 @@
 				status: true
 			}
 			return validation;
+		}
+
+		function getById(id, cars) {
+			var existent = cars.filter(function(car) {
+				return car.id == id;
+			});
+			if (existent.length) {
+				return existent[0];
+			}
+			return null;
 		}
 
 		/**

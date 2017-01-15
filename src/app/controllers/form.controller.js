@@ -24,12 +24,18 @@
 		 * Controller methods.
 		 */
 		vm.persist = persist;
+		vm.cancel = cancel;
 
 		/**
 		 * Public functions (exposed by methods).
 		 */
 		function persist(car) {
 			GarageService.persist(car).then(successAddCbk, errorAddCbk);
+		}
+
+		function cancel(car) {
+			GarageService.resetCar();
+			$state.go('home');
 		}
 
 		/**
