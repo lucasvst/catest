@@ -12,12 +12,12 @@
 		/**
 		 * Me.
 		 */
-		var svc = this;
+		var self = this;
 
 		/**
 		 * Service methods.
 		 */
-		svc.getCars = getCars;
+		self.getCars = getCars;
 		function getCars() {
 			return $http.get(API.cars);
 		}
