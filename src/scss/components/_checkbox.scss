@@ -1,0 +1,63 @@
+/**
+* Checkbox overrides
+*/
+span.input {
+	display:block;
+
+	label {
+		/* bootstrap overrides */
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+
+input[type="checkbox"] + label {
+	color: #000;
+	font-size: 1em;
+	curser: pointer;
+}
+
+input[type="checkbox"] {
+
+	position:absolute;
+	opacity:0;
+	curser: pointer;
+
+	&:hover,
+	&:focus,
+	&:hover + label,
+	&:focus + label {
+		border-color: #ddd;
+		color: #ddd;
+	}
+
+	&:checked + label {
+		color: black;
+		position:relative;
+	}
+}
+
+input[type="checkbox"] + label::before {
+	content: '';
+	width: 20px;
+	height: 20px;
+	margin-right: .5em;
+	position: relative;
+	top: .25em;
+	display: inline-block;
+	background-color: transparent;
+	border: 1px solid $brand-neutral;
+	border-radius: 2px;
+}
+
+input[type="checkbox"]:checked + label::after {
+	content: '✔';
+	display: block;
+	position: absolute;
+	margin-top: -8px;
+	top: 50%;
+	left: 4px;
+	width: 10px;
+	height: 10px;
+	color: #fff;
+}

@@ -1,14 +1,32 @@
 <div class="table-responsive">
     <table
-        class="table table-hover table-bordered"
+        class="table table-hover table-bordered v-middle car-list"
         at-table
         at-paginated
         at-list="filteredItems"
         at-config="config"
     >
-        <thead></thead>
+        <thead>
+            <tr>
+                <th at-attribute="checkbox">
+                    <span class="input">
+                        <input type="checkbox" value="" id="checkbox-{{ $index }}" />
+                        <label class="checkbox" for="checkbox-{{ $index }}"></label>
+                    </span>
+                </th>
+            </tr>
+            <tr>
+                <th at-attribute="valor" class="text-right">Valor</th>
+            </tr>
+        </thead>
         <tbody>
             <tr>
+                <td class="col-square" at-attribute="checkbox" at-title="">
+                    <span class="input">
+                        <input type="checkbox" value="" id="checkbox-{{ $index }}" />
+                        <label class="checkbox" for="checkbox-{{ $index }}"></label>
+                    </span>
+                </td>
                 <td at-attribute="placa" at-title="Placa">{{ item.placa }}</td>
                 <td at-attribute="modelo" at-title="Modelo">{{ item.modelo }}</td>
                 <td at-attribute="marca" at-title="Marca">{{ item.marca }}</td>
@@ -17,11 +35,11 @@
                     <span ng-if="!item.imagem">Sem foto</span>
                 </td>
                 <td at-attribute="combustivel"  at-title="Combustível">{{ item.combustivel }}</td>
-                <td at-attribute="valor" at-title="Valor">{{ item.valor|currency:'R$ ' }}</td>
-                <td at-title="Ações">
+                <td at-attribute="valor" at-title="Valor" class="text-right">{{ item.valor|currency:'R$ ' }}</td>
+                <!-- <td at-title="Ações">
                     <button data-ng-click="update(item)" class="btn btn-xs btn-primary">Editar</button>
                     <button data-ng-click="remove(item)" class="btn btn-xs btn-danger">Remover</button>
-                </td>
+                </td> -->
             </tr>
         </tbody>
     </table>

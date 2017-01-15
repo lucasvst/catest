@@ -1,0 +1,25 @@
+/**
+ * Bootstrap button overrides.
+ */
+.btn {
+
+	padding: 8px 12px;
+
+	&.btn-success {
+		background-color: $brand-success;
+		border-color: $brand-success;
+	}
+	&.btn-default {
+	    color: $brand-font;
+    	background-color: $brand-default;
+    	border-color: #ccc;
+	}
+}
+
+.btn {
+
+	&.btn-stretx{
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+}

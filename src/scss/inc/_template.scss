@@ -1,6 +1,10 @@
 /**
  * Template definitions.
  */
-@import '../components/navbar';
-@import '../components/modal';
-@import '../components/table';
+
+$body-bg: #F1F2F9;
+
+body {
+	background-color: $body-bg;
+	color: $brand-font;
+}

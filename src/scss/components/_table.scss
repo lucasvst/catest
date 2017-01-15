@@ -1,12 +1,36 @@
 /**
- * Bootstrap table overrides
+ * Bootstrap table overrides.
  */
 .table {
+	background-color: $brand-clear;
+	font-size: .9em;
+
 	&.table-bordered {
 		td,
 		th {
 			border: none;
-			border-bottom: 1px solid $neutral-base-light;
+			border-bottom: 1px solid $brand-neutral;
 		}
+	}
+	&.v-middle > tbody > tr > td,
+	&.v-middle > thead > tr > th {
+	     vertical-align: middle;
+	}
+	&.table-hover > tbody > tr:hover {
+	    background-color: $brand-neutral-hover;
+	    border: 1px solid $brand-neutral-hover-border;
+	}
+	thead {
+		background-color: $brand-neutral-dark;
+	}
+}
+
+/**
+ * Application bases.
+ */
+.table {
+	td.col-square,
+	th.col-square {
+		max-width: 10px;
 	}
 }

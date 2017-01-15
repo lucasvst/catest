@@ -1,0 +1,29 @@
+/**
+ * .car-list custom stylesheet.
+ */
+
+table.car-list {
+
+	thead tr th:first-child,
+	tbody tr td:first-child {
+		max-width: 28px;
+	}
+
+	thead tr th:first-child {
+		padding-left: 12px;
+	}
+
+	tbody tr td:first-child {
+		padding: 12px;
+	}
+
+	thead tr th:last-child,
+	tbody tr td:last-child {
+		padding-right: 30px;
+	}
+
+	thead tr th:nth-child(2),
+	tbody tr td:nth-child(2) {
+		padding-left: 22px;
+	}
+}
