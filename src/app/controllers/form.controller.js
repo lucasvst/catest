@@ -5,9 +5,9 @@
 		.module('app')
 		.controller('FormController', FormController);
 
-	FormController.$inject = ['GarageService', 'ModalService', '$state', '$stateParams'];
+	FormController.$inject = ['$scope', 'GarageService', 'ModalService', '$state', '$stateParams'];
 
-	function FormController(GarageService, ModalService, $state, $stateParams) {
+	function FormController($scope, GarageService, ModalService, $state, $stateParams) {
 
 		/**
 		 * Me.
@@ -54,6 +54,8 @@
 
 		GarageService.getAll();
 		GarageService.get($stateParams.id);
+
+		$scope.$on('$destroy', GarageService.resetCar);
 	}
 
 })(window.angular);

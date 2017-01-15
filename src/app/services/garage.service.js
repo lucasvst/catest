@@ -27,6 +27,7 @@
 		svc.get = get;
 		svc.persist = persist;
 		svc.remove = remove;
+		svc.resetCar = resetCar;
 
 		/**
 		 * Public functions (exposed by methods).
@@ -146,6 +147,10 @@
 
 			defer.resolve(asyncRes)
 			return defer.promise;
+		}
+
+		function resetCar() {
+			svc.car = {};
 		}
 
 		/**
