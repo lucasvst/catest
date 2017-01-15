@@ -10,8 +10,8 @@
             <tr>
                 <th at-attribute="checkbox">
                     <span class="input">
-                        <input type="checkbox" value="" id="checkbox-{{ $index }}" />
-                        <label class="checkbox" for="checkbox-{{ $index }}"></label>
+                        <input type="checkbox" value="" id="checkbox-all"/>
+                        <label class="checkbox" for="checkbox-all"></label>
                     </span>
                 </th>
             </tr>
@@ -23,7 +23,13 @@
             <tr>
                 <td class="col-square" at-attribute="checkbox" at-title="">
                     <span class="input">
-                        <input type="checkbox" value="" id="checkbox-{{ $index }}" />
+                        <input
+                            type="checkbox"
+                            value=""
+                            id="checkbox-{{ $index }}"
+                            ng-model="selected"
+                            ng-change=toggleItems(item)
+                        />
                         <label class="checkbox" for="checkbox-{{ $index }}"></label>
                     </span>
                 </td>
@@ -31,15 +37,11 @@
                 <td at-attribute="modelo" at-title="Modelo">{{ item.modelo }}</td>
                 <td at-attribute="marca" at-title="Marca">{{ item.marca }}</td>
                 <td at-attribute="imagem" at-title="Foto">
-                    <a ng-if="item.imagem" data-ng-click="image(item)">Imagem</a>
+                    <a ng-if="item.imagem" data-ng-click="showImage(item)">Imagem</a>
                     <span ng-if="!item.imagem">Sem foto</span>
                 </td>
                 <td at-attribute="combustivel"  at-title="Combustível">{{ item.combustivel }}</td>
                 <td at-attribute="valor" at-title="Valor" class="text-right">{{ item.valor|currency:'R$ ' }}</td>
-                <!-- <td at-title="Ações">
-                    <button data-ng-click="update(item)" class="btn btn-xs btn-primary">Editar</button>
-                    <button data-ng-click="remove(item)" class="btn btn-xs btn-danger">Remover</button>
-                </td> -->
             </tr>
         </tbody>
     </table>

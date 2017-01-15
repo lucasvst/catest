@@ -16,9 +16,7 @@
 			scope: {
 				filter: '=',
 				items: '=',
-				remove: '=',
-				update: '=',
-				image: '='
+				toggleItems: '='
 			},
 
 			link: function($scope, elem, attrs) {

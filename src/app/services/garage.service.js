@@ -129,17 +129,21 @@
 			return defer.promise;
 		}
 
-		function remove(car) {
+		function remove(cars) {
 
 			var defer = $q.defer(),
-				_carIndex = svc.cars.indexOf(car);
+				_length = svc.cars.length;
 
 			/**
 			 * Here should be the $http or equivalent integration. Only for test
 			 * purposes the application will REMOVE the item from the reference array
 			 * and continue without persist this state.
 			 */
-			svc.cars.splice(_carIndex, 1);
+			for (var i = _length - 1; i >= 0; i--) {
+				if (cars.indexOf(svc.cars[i]) > -1) {
+					svc.cars.splice(i, 1);
+				}
+			}
 			var asyncRes = {
 				status: true,
 				message: 'Veículo removido com sucesso!'

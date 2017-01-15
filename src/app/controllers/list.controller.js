@@ -19,6 +19,7 @@
 		 */
 		vm.cars = GarageService.cars;
 		vm.carFilter;
+		vm.carsSelected = [];
 
 		/**
 		 * Controller methods.
@@ -27,6 +28,7 @@
 		vm.remove = remove;
 		vm.update = update;
 		vm.showImage = showImage;
+		vm.toggleItems = toggleItems;
 
 		/**
 		 * Public functions (exposed by methods).
@@ -35,8 +37,8 @@
 			vm.carFilter = query;
 		}
 
-		function remove(car) {
-			GarageService.remove(car).then(successRemoveCbk, errorRemoveCbk);
+		function remove(cars) {
+			GarageService.remove(cars).then(successRemoveCbk, errorRemoveCbk);
 
 		}
 
@@ -49,6 +51,17 @@
 				title: car.modelo,
 				image: car.imagem
 			})
+		}
+
+		function toggleItems(car) {
+			var _carIndex = vm.carsSelected.indexOf(car);
+
+			if (_carIndex >= 0) {
+				vm.carsSelected.splice(_carIndex, 1);
+				return;
+			}
+
+			vm.carsSelected.push(car);
 		}
 
 		/**
