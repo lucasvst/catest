@@ -35,7 +35,7 @@
 				$scope.$watch('filter', changeFilter)
 
 				function changeFilter(value) {
-					$scope.filteredItems = $filter("filter")($scope.items, $scope.filter);
+					$scope.filteredItems = $filter("carFilter")($scope.items, $scope.filter);
 				}
 			}
 		};
