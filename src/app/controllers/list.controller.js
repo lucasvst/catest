@@ -28,7 +28,7 @@
 		vm.remove = remove;
 		vm.update = update;
 		vm.showImage = showImage;
-		vm.toggleItems = toggleItems;
+		vm.selectedItems = selectedItems;
 
 		/**
 		 * Public functions (exposed by methods).
@@ -53,15 +53,10 @@
 			})
 		}
 
-		function toggleItems(car) {
-			var _carIndex = vm.carsSelected.indexOf(car);
-
-			if (_carIndex >= 0) {
-				vm.carsSelected.splice(_carIndex, 1);
-				return;
-			}
-
-			vm.carsSelected.push(car);
+		function selectedItems() {
+			return vm.cars.filter(function(car) {
+				return car.selected;
+			}).length;
 		}
 
 		/**

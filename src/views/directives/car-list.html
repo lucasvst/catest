@@ -10,7 +10,13 @@
             <tr>
                 <th at-attribute="checkbox">
                     <span class="input">
-                        <input type="checkbox" value="" id="checkbox-all"/>
+                        <input
+                            type="checkbox"
+                            value=""
+                            id="checkbox-all"
+                            ng-model="list.selectAll"
+                            ng-change=toggleCheckboxes(list.selectAll)
+                        />
                         <label class="checkbox" for="checkbox-all"></label>
                     </span>
                 </th>
@@ -27,8 +33,7 @@
                             type="checkbox"
                             value=""
                             id="checkbox-{{ $index }}"
-                            ng-model="selected"
-                            ng-change=toggleItems(item)
+                            ng-model="item.selected"
                         />
                         <label class="checkbox" for="checkbox-{{ $index }}"></label>
                     </span>

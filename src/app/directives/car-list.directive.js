@@ -16,12 +16,13 @@
 			scope: {
 				filter: '=',
 				items: '=',
-				toggleItems: '='
+				showImage: '=',
 			},
 
 			link: function($scope, elem, attrs) {
 
 				$scope.filteredItems = $scope.items;
+				$scope.list = { selectAll: false }
 				$scope.config = {
 					itemsPerPage: 5,
 					fillLastPage: false,
@@ -39,10 +40,26 @@
 
 			controller: function($scope) {
 
-				$scope.$watch('filter', changeFilter)
-
+				$scope.$watch('filter', changeFilter);
 				function changeFilter(value) {
 					$scope.filteredItems = $filter("carFilter")($scope.items, $scope.filter);
+				}
+
+				$scope.toggleCheckboxes = toggleCheckboxes;
+				function toggleCheckboxes(selectAll) {
+					$scope.filteredItems.forEach(function(item) {
+						item.selected = selectAll;
+					})
+				}
+
+				$scope.$watch('filteredItems', toggleSelectAll, true);
+				function toggleSelectAll() {
+					var count = $scope.filteredItems.filter(function(item) {
+							return item.selected;
+						}).length,
+						isAllChecked = count == $scope.filteredItems.length;
+
+					$scope.list.selectAll = isAllChecked;
 				}
 			}
 		};
