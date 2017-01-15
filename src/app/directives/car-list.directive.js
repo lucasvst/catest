@@ -15,7 +15,9 @@
 			templateUrl: '/views/directives/car-list.html',
 			scope: {
 				filter: '=',
-				items: '='
+				items: '=',
+				remove: '=',
+				update: '='
 			},
 
 			link: function($scope, elem, attrs) {

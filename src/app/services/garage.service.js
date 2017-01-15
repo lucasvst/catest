@@ -26,6 +26,7 @@
 		svc.getAll = getAll;
 		svc.get = get;
 		svc.persist = persist;
+		svc.remove = remove;
 
 		/**
 		 * Public functions (exposed by methods).
@@ -88,7 +89,7 @@
 			/**
 			 * Here should be the $http or equivalent integration. Only for test
 			 * purposes the application will ADD the item to the reference array
-			 * and continue without persist.
+			 * and continue without persist this state.
 			 */
 			svc.cars.push(car);
 			var asyncRes = {
@@ -113,11 +114,32 @@
 			/**
 			 * Here should be the $http or equivalent integration. Only for test
 			 * purposes the application will UPDATE the item to the reference array
-			 * and continue without persist.
+			 * and continue without persist this state.
 			 */
+			 /* do nothing, already updated at reference array */
 			var asyncRes = {
 				status: true,
 				message: 'Veículo atualizado com sucesso!'
+			}
+
+			defer.resolve(asyncRes)
+			return defer.promise;
+		}
+
+		function remove(car) {
+
+			var defer = $q.defer(),
+				_carIndex = svc.cars.indexOf(car);
+
+			/**
+			 * Here should be the $http or equivalent integration. Only for test
+			 * purposes the application will REMOVE the item from the reference array
+			 * and continue without persist this state.
+			 */
+			svc.cars.splice(_carIndex, 1);
+			var asyncRes = {
+				status: true,
+				message: 'Veículo removido com sucesso!'
 			}
 
 			defer.resolve(asyncRes)

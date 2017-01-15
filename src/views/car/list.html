@@ -26,7 +26,12 @@
 	<div class="row top-buffer">
 		<div class="col-md-12">
 	    	<!-- Car list -->
-	    	<car-list items="listCtrl.cars" filter="listCtrl.carFilter"></car-list>
+	    	<car-list
+	    		remove="listCtrl.remove"
+	    		update="listCtrl.update"
+	    		items="listCtrl.cars"
+	    		filter="listCtrl.carFilter"
+	    	></car-list>
 		</div>
 	</div>
 
