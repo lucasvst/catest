@@ -28,7 +28,7 @@
 
                 <div class="form-group">
                     <label for="valor" class="control-label">Valor</label>
-                    <input type="text" class="form-control" id="valor" placeholder="Valor do Veículo" required data-ng-model="formCtrl.car.valor" ui-money-mask>
+                    <input type="text" class="form-control" id="valor" placeholder="Valor do Veículo" data-ng-model="formCtrl.car.valor" ui-money-mask>
                 </div>
 
                 <div class="form-group">
@@ -37,7 +37,6 @@
                         type="text"
                         class="form-control"
                         id="combustivel"
-                        required
                         data-ng-model="formCtrl.car.combustivel"
                         ng-options="fuel as fuel for fuel in fuelList"
                     >
