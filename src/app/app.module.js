@@ -5,7 +5,8 @@
   	'ui.router',
   	'ui.utils.masks',
   	'angular-table',
-  	'ui.bootstrap'
+  	'ui.bootstrap',
+  	'angular-md5'
   ])
 
 })(window.angular);

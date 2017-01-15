@@ -14,7 +14,8 @@ const SOURCES = {
     './node_modules/angular-input-masks/releases/angular-input-masks-standalone.min.js',
     './node_modules/angular-table/dist/angular-table.js',
     './node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js',
-    './node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js'
+    './node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
+    './node_modules/angular-md5/angular-md5.min.js'
   ],
   images: ['./src/img/**'],
   scripts: ['./src/app/**/*.js'],
