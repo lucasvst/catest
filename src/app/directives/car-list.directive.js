@@ -24,6 +24,10 @@
 			link: function($scope, elem, attrs) {
 
 				$scope.filteredItems = $scope.items;
+				$scope.config = {
+					itemsPerPage: 5,
+					fillLastPage: false
+				}
 			},
 
 			controller: function($scope) {
