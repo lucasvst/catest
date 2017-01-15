@@ -5,9 +5,9 @@
 		.module('app')
 		.factory('GarageService', GarageService);
 
-	GarageService.$inject = ['ApiService', '$q'];
+	GarageService.$inject = ['ApiService', '$q', 'md5'];
 
-	function GarageService(ApiService, $q) {
+	function GarageService(ApiService, $q, md5) {
 
 		/**
 		 * Me.
@@ -18,12 +18,14 @@
 		 * Service properties.
 		 */
 		svc.cars = [];
+		svc.car = {};
 
 		/**
 		 * Service methods.
 		 */
 		svc.getAll = getAll;
-		svc.add = add;
+		svc.get = get;
+		svc.persist = persist;
 
 		/**
 		 * Public functions (exposed by methods).
@@ -39,10 +41,38 @@
 
 			ApiService.getCars().then(function(res){
 				angular.copy(res.data, svc.cars);
+				svc.cars.forEach(function(car) {
+					car.id = md5.createHash(car.placa);
+				})
 				defer.resolve(svc.cars);
 			}, function(res) { console.log(res); defer.reject(res) });
 
 			return defer.promise;
+		}
+
+		function get(id) {
+
+			var defer = $q.defer();
+
+			var cars = svc.cars.filter(function(car) {
+				return car.id == id;
+			});
+
+			if (cars.length) {
+				svc.car = cars[0];
+			}
+
+			defer.resolve(svc.car);
+			return defer.promise;
+		}
+
+		function persist(car) {
+
+			if ( ! car.hasOwnProperty('id')) {
+				return add(car);
+			} else {
+				return update(car);
+			}
 		}
 
 		function add(car) {
@@ -57,13 +87,37 @@
 
 			/**
 			 * Here should be the $http or equivalent integration. Only for test
-			 * purposes the application will add the item to the reference array
+			 * purposes the application will ADD the item to the reference array
 			 * and continue without persist.
 			 */
 			svc.cars.push(car);
 			var asyncRes = {
 				status: true,
 				message: 'Veículo adicionado à frota com sucesso!'
+			}
+
+			defer.resolve(asyncRes)
+			return defer.promise;
+		}
+
+		function update(car) {
+
+			var defer = $q.defer(),
+				validation = validate(car);
+
+			if ( ! validation.status) {
+				defer.reject(validation.error);
+				return defer.promise;
+			}
+
+			/**
+			 * Here should be the $http or equivalent integration. Only for test
+			 * purposes the application will UPDATE the item to the reference array
+			 * and continue without persist.
+			 */
+			var asyncRes = {
+				status: true,
+				message: 'Veículo atualizado com sucesso!'
 			}
 
 			defer.resolve(asyncRes)

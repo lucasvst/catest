@@ -3,11 +3,11 @@
 
 	angular
 		.module('app')
-		.controller('CarController', CarController);
+		.controller('FormController', FormController);
 
-	CarController.$inject = ['GarageService', 'ModalService', '$state'];
+	FormController.$inject = ['GarageService', 'ModalService', '$state', '$stateParams'];
 
-	function CarController(GarageService, ModalService, $state) {
+	function FormController(GarageService, ModalService, $state, $stateParams) {
 
 		/**
 		 * Me.
@@ -17,24 +17,19 @@
 		/**
 		 * Controller properties.
 		 */
+		vm.car = GarageService.car;
 		vm.cars = GarageService.cars;
-		vm.carFilter;
 
 		/**
 		 * Controller methods.
 		 */
-		vm.setCarFilter = setCarFilter;
-		vm.add = addCar;
+		vm.persist = persist;
 
 		/**
 		 * Public functions (exposed by methods).
 		 */
-		function setCarFilter(query) {
-			vm.carFilter = query;
-		}
-
-		function addCar(car) {
-			GarageService.add(car).then(successAddCbk, errorAddCbk);
+		function persist(car) {
+			GarageService.persist(car).then(successAddCbk, errorAddCbk);
 		}
 
 		/**
@@ -57,10 +52,8 @@
 			})
 		}
 
-		/**
-		 * Init.
-		 */
 		GarageService.getAll();
+		GarageService.get($stateParams.id);
 	}
 
 })(window.angular);

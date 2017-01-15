@@ -1,34 +1,34 @@
 <div class="panel panel-default">
     <div class="panel-body">
 
-        <form class="form" ng-submit="carCtrl.add(car)">
+        <form class="form" ng-submit="formCtrl.persist(formCtrl.car)">
             <fieldset>
 
                 <legend>Novo Carro</legend>
 
                 <div class="form-group">
                     <label for="placa" class="control-label">Placa</label>
-                    <input type="text" class="form-control" id="placa" placeholder="Número da placa" required data-ng-model="car.placa" ui-br-car-plate-mask>
+                    <input type="text" class="form-control" id="placa" placeholder="Número da placa" required data-ng-model="formCtrl.car.placa" ui-br-car-plate-mask>
                 </div>
 
                 <div class="form-group">
                     <label for="modelo" class="control-label">Modelo</label>
-                    <input type="text" class="form-control" id="modelo" placeholder="Nome do Modelo" required data-ng-model="car.modelo">
+                    <input type="text" class="form-control" id="modelo" placeholder="Nome do Modelo" required data-ng-model="formCtrl.car.modelo">
                 </div>
 
                 <div class="form-group">
                     <label for="marca" class="control-label">Marca</label>
-                    <input type="text" class="form-control" id="marca" placeholder="Nome da Marca" required data-ng-model="car.marca">
+                    <input type="text" class="form-control" id="marca" placeholder="Nome da Marca" required data-ng-model="formCtrl.car.marca">
                 </div>
 
                 <div class="form-group">
                     <label for="imagem" class="control-label">Foto</label>
-                    <input type="text" class="form-control" id="imagem" placeholder="Url da imagem" required data-ng-model="car.imagem">
+                    <input type="text" class="form-control" id="imagem" placeholder="Url da imagem" data-ng-model="formCtrl.car.imagem">
                 </div>
 
                 <div class="form-group">
                     <label for="valor" class="control-label">Valor</label>
-                    <input type="text" class="form-control" id="valor" placeholder="Valor do Veículo" required data-ng-model="car.valor" ui-money-mask>
+                    <input type="text" class="form-control" id="valor" placeholder="Valor do Veículo" required data-ng-model="formCtrl.car.valor" ui-money-mask>
                 </div>
 
                 <div class="form-group">
@@ -38,7 +38,7 @@
                         class="form-control"
                         id="combustivel"
                         required
-                        data-ng-model="car.combustivel"
+                        data-ng-model="formCtrl.car.combustivel"
                         ng-options="fuel as fuel for fuel in fuelList"
                     >
                         <option value="">Selecione um Combustível</option>

@@ -9,7 +9,7 @@
 		</div>
 
 		<div class="col-sm-4">
-			<form ng-submit="carCtrl.setCarFilter(query)">
+			<form ng-submit="listCtrl.setCarFilter(query)">
 				<div class="input-group">
 					<!-- Car Filter -->
 					<input type="text" class="form-control" placeholder="Pesquisar" ng-model="query">
@@ -26,7 +26,7 @@
 	<div class="row top-buffer">
 		<div class="col-md-12">
 	    	<!-- Car list -->
-	    	<car-list items="carCtrl.cars" filter="carCtrl.carFilter"></car-list>
+	    	<car-list items="listCtrl.cars" filter="listCtrl.carFilter"></car-list>
 		</div>
 	</div>
 

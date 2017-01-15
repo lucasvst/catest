@@ -21,9 +21,8 @@
                     <td at-attribute="combustivel"  at-title="Combustível">{{ item.combustivel }}</td>
                     <td at-attribute="valor" at-title="Valor">{{ item.valor|currency:'R$ ' }}</td>
                     <td at-title="Ações">
-                        <a href="/#/cars/{{ car.$hashkey }}" class="btn btn-xs btn-info">view</a>
-                        <a href="/#/cars/update/{{ job.$hashkey }}" class="btn btn-xs btn-primary">update</a>
-                        <button data-ng-click="remove(car)" class="btn btn-xs btn-danger">delete</button>
+                        <a ui-sref="update({id:item.id})" class="btn btn-xs btn-primary">Editar</a>
+                        <button data-ng-click="remove(item)" class="btn btn-xs btn-danger">Remover</button>
                     </td>
                 </tr>
             </tbody>
