@@ -1,7 +1,5 @@
 /**
- * Variables.
- *
- * Neutral and Brand Colors for use across theme must be described here.
+ * Colors
  */
 
 $brand-clear: #FFFFFF;
@@ -18,3 +16,12 @@ $brand-neutral-hover-border: #8FBBFA;
 $brand-neutral-dark: #F8F9FC;
 
 $brand-font: #41537C;
+
+/**
+ * Breakpoints
+ */
+$screen-xs: 480px;
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+$breakpoints: (phone: $screen-xs, tablet: $screen-sm, desktop: $screen-md, large: $screen-lg);
