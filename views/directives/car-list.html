@@ -1,34 +1,55 @@
-<div class="panel panel-default">
-    <div class="panel-body">
-
-        <table
-            class="table"
-            at-table
-            at-paginated
-            at-list="filteredItems"
-            at-config="config"
-        >
-            <thead></thead>
-            <tbody>
-                <tr>
-                    <td at-attribute="placa" at-title="Placa">{{ item.placa }}</td>
-                    <td at-attribute="modelo" at-title="Modelo">{{ item.modelo }}</td>
-                    <td at-attribute="marca" at-title="Marca">{{ item.marca }}</td>
-                    <td at-attribute="imagem" at-title="Foto">
-                        <a ng-if="item.imagem" href="{{ item.imagem }}">Imagem</a>
-                        <span ng-if="!item.imagem">Sem foto</span>
-                    </td>
-                    <td at-attribute="combustivel"  at-title="Combustível">{{ item.combustivel }}</td>
-                    <td at-attribute="valor" at-title="Valor">{{ item.valor|currency:'R$ ' }}</td>
-                    <td at-title="Ações">
-                        <a ui-sref="update({id:item.id})" class="btn btn-xs btn-primary">Editar</a>
-                        <button data-ng-click="remove(item)" class="btn btn-xs btn-danger">Remover</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-    </div>
+<div class="table-responsive">
+    <table
+        class="table table-hover table-bordered v-middle"
+        at-table
+        at-paginated
+        at-list="filteredItems"
+        at-config="config"
+    >
+        <thead>
+            <tr>
+                <th at-attribute="checkbox">
+                    <span class="input">
+                        <input
+                            type="checkbox"
+                            value=""
+                            id="checkbox-all"
+                            ng-model="list.selectAll"
+                            ng-change=toggleCheckboxes(list.selectAll)
+                        />
+                        <label class="checkbox" for="checkbox-all"></label>
+                    </span>
+                </th>
+            </tr>
+            <tr>
+                <th at-attribute="valor" class="text-right">Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="col-square" at-attribute="checkbox" at-title="">
+                    <span class="input">
+                        <input
+                            type="checkbox"
+                            value=""
+                            id="checkbox-{{ $index }}"
+                            ng-model="item.selected"
+                        />
+                        <label class="checkbox" for="checkbox-{{ $index }}"></label>
+                    </span>
+                </td>
+                <td at-attribute="placa" at-title="Placa">{{ item.placa|carPlateView }}</td>
+                <td at-attribute="modelo" at-title="Modelo">{{ item.modelo|dash }}</td>
+                <td at-attribute="marca" at-title="Marca">{{ item.marca|dash }}</td>
+                <td at-attribute="imagem" at-title="Foto">
+                    <a href="#" ng-if="item.imagem" data-ng-click="showImage(item)">Imagem</a>
+                    <span ng-if="!item.imagem">Sem foto</span>
+                </td>
+                <td at-attribute="combustivel"  at-title="Combustível">{{ item.combustivel|dash }}</td>
+                <td at-attribute="valor" at-title="Valor" class="text-right">{{ item.valor|currency:''|dash }}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <div class="text-center">

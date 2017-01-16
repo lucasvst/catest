@@ -3,12 +3,28 @@
 <section class="container">
 
 	<div class="row">
-		<div class="col-sm-8">
+
+		<div class="col-xs-12 col-sm-8 car-list-actions">
 			<!-- New Car -->
-			<a ui-sref="add" class="btn btn-success">Novo Carro</a>
+			<a ui-sref="add" class="btn btn-success btn-stretx">
+				<span class="btn-text">Novo Carro</span>
+				<span class="btn-ico glyphicon glyphicon-plus"></span>
+			</a>
+			<button
+				class="btn btn-info"
+				ng-if="listCtrl.selectedItemsCount() == 1"
+				ng-click="listCtrl.update()"
+			><span class="glyphicon glyphicon-pencil"></span>
+			</button>
+			<button
+				class="btn btn-danger"
+				ng-if="listCtrl.selectedItemsCount()"
+				ng-click="listCtrl.remove()"
+			><span class="glyphicon glyphicon-trash"></span>
+			</button>
 		</div>
 
-		<div class="col-sm-4">
+		<div class="col-xs-12 col-sm-4 car-list-search">
 			<form ng-submit="listCtrl.setCarFilter(query)">
 				<div class="input-group">
 					<!-- Car Filter -->
@@ -26,7 +42,12 @@
 	<div class="row top-buffer">
 		<div class="col-md-12">
 	    	<!-- Car list -->
-	    	<car-list items="listCtrl.cars" filter="listCtrl.carFilter"></car-list>
+	    	<car-list
+	    		class="car-list"
+	    		show-image="listCtrl.showImage"
+	    		items="listCtrl.cars"
+	    		filter="listCtrl.carFilter"
+	    	></car-list>
 		</div>
 	</div>
 
