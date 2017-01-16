@@ -59,6 +59,7 @@
 				instance: undefined,
 				title: '',
 				message: '',
+				status: 'info',
 				afterClose: undefined
 			};
 		}

@@ -45,6 +45,7 @@
 			ModalService.open({
 				title: 'Sucesso!',
 				message: res.message,
+				status: 'success',
 				afterClose: function() {
 					$state.go('home');
 				}
@@ -54,6 +55,7 @@
 		function errorAddCbk(res) {
 			ModalService.open({
 				title: 'Erro!',
+				status: 'danger',
 				message: res.message,
 			})
 		}
