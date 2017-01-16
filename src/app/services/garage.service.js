@@ -55,7 +55,7 @@
 		function get(id) {
 
 			var defer = $q.defer(),
-				existentCar = getById(id, svc.cars);
+				existentCar = getBy('id', id, svc.cars);
 
 			if (existentCar) {
 				svc.car = angular.copy(existentCar);
@@ -107,7 +107,7 @@
 		function update(car) {
 
 			var defer = $q.defer(),
-				existent = getById(car.id, svc.cars);
+				existent = getBy('id', car.id, svc.cars);
 
 			angular.extend(existent, car)
 
@@ -169,19 +169,38 @@
 			if ( ! carPlateIsValid) {
 				validation.status = false;
 				validation.message = 'Formato de Placa Inválida!';
+				return validation;
+			}
+
+			/**
+			 * Validate Car Plate.
+			 */
+			var carPlateExists = existentCarPlateChecking(car, svc.cars);
+			if (carPlateExists) {
+				validation.status = false;
+				validation.message = 'Já existe um veículo cadastrado com esta Placa!';
+				return validation;
 			}
 
 			return validation;
 		}
 
-		function getById(id, cars) {
-			var existent = cars.filter(function(car) {
-				return car.id == id;
+		function getBy(_field, _val, items) {
+			var existent = items.filter(function(item) {
+				return item[_field] == _val;
 			});
 			if (existent.length) {
 				return existent[0];
 			}
 			return null;
+		}
+
+		function existentCarPlateChecking(car, cars) {
+			var existent = getBy('placa', ForwardAgent.toApi(car.placa), cars);
+			if (car.hasOwnProperty('id')) {
+				return (existent.id != car.id);
+			}
+			return existent;
 		}
 
 		/**
