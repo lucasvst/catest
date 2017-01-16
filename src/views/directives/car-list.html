@@ -39,14 +39,14 @@
                     </span>
                 </td>
                 <td at-attribute="placa" at-title="Placa">{{ item.placa|carPlateView }}</td>
-                <td at-attribute="modelo" at-title="Modelo">{{ item.modelo }}</td>
-                <td at-attribute="marca" at-title="Marca">{{ item.marca }}</td>
+                <td at-attribute="modelo" at-title="Modelo">{{ item.modelo|dash }}</td>
+                <td at-attribute="marca" at-title="Marca">{{ item.marca|dash }}</td>
                 <td at-attribute="imagem" at-title="Foto">
                     <a href="#" ng-if="item.imagem" data-ng-click="showImage(item)">Imagem</a>
                     <span ng-if="!item.imagem">Sem foto</span>
                 </td>
-                <td at-attribute="combustivel"  at-title="Combustível">{{ item.combustivel }}</td>
-                <td at-attribute="valor" at-title="Valor" class="text-right">{{ item.valor|currency:'R$ ' }}</td>
+                <td at-attribute="combustivel"  at-title="Combustível">{{ item.combustivel|dash }}</td>
+                <td at-attribute="valor" at-title="Valor" class="text-right">{{ item.valor|currency:''|dash }}</td>
             </tr>
         </tbody>
     </table>
