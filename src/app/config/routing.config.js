@@ -10,7 +10,7 @@
 		$locationProvider
 			.html5Mode({
 				enabled: true,
-				requireBase: false
+				requireBase: true
 			}).hashPrefix('!');
 
 		$urlRouterProvider.otherwise('/');
@@ -20,33 +20,33 @@
 				url:'/',
 				views: {
 					'': {
-						templateUrl: '/views/car/list.html',
+						templateUrl: 'views/car/list.html',
 						controller: 'ListController as listCtrl',
 
 					},
-					'navbar@home': { templateUrl: '/views/common/navbar.html' }
+					'navbar@home': { templateUrl: 'views/common/navbar.html' }
 				}
 			})
 			.state('add', {
 				url:'/novo',
 				views: {
 					'': {
-						templateUrl: '/views/car/add.html',
+						templateUrl: 'views/car/add.html',
 						controller: 'FormController as formCtrl',
 
 					},
-					'navbar@add': { templateUrl: '/views/common/navbar.html' }
+					'navbar@add': { templateUrl: 'views/common/navbar.html' }
 				}
 			})
 			.state('update', {
 				url:'/editar/:id',
 				views: {
 					'': {
-						templateUrl: '/views/car/add.html',
+						templateUrl: 'views/car/add.html',
 						controller: 'FormController as formCtrl',
 
 					},
-					'navbar@update': { templateUrl: '/views/common/navbar.html' }
+					'navbar@update': { templateUrl: 'views/common/navbar.html' }
 				}
 			})
 	}

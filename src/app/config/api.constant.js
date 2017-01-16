@@ -3,7 +3,7 @@
 
 	var api	= {};
 
-	api.baseUrl = '/api/';
+	api.baseUrl = 'api/';
 
 	api.cars = resourceOf('cars');
 

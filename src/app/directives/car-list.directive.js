@@ -12,7 +12,7 @@
 		return {
 
 			restrict: 'E',
-			templateUrl: '/views/directives/car-list.html',
+			templateUrl: 'views/directives/car-list.html',
 			scope: {
 				filter: '=',
 				items: '=',

@@ -12,7 +12,7 @@
 		return {
 
 			restrict: 'E',
-			templateUrl: '/views/directives/car-form.html',
+			templateUrl: 'views/directives/car-form.html',
 			scope: {},
 
 			link: function($scope, elem, attrs) {
