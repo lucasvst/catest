@@ -34,14 +34,15 @@ const gulp = require('gulp'),
     concat = require('gulp-concat'),
     sass = require('gulp-sass'),
     minifyCss = require('gulp-minify-css'),
-    rename = require('gulp-rename')
+    rename = require('gulp-rename'),
+    connect = require('gulp-connect');
 
 /**
  * Describe all tasks and subtasks.
  */
 
 /* main tasks */
-gulp.task('default', ['build', 'watch'])
+gulp.task('default', ['build', 'watch', 'connect'])
 gulp.task('build', ['assets', 'html', 'vendor'])
 gulp.task('watch', () => gulp.watch(['./src/**'], ['build']))
 gulp.task('assets', ['sass', 'images', 'scripts'])
@@ -49,6 +50,7 @@ gulp.task('html', ['index', 'views', 'api'])
 gulp.task('vendor', ['vendorCss', 'vendorJs', 'vendorFonts'])
 
 /* subtasks */
+gulp.task('connect', connectTask);
 gulp.task('sass', sassTask)
 gulp.task('images', imagesTask)
 gulp.task('scripts', scriptsTask)
@@ -62,6 +64,15 @@ gulp.task('vendorFonts', vendorFontsTask)
 /**
  * Code your tasks :).
  */
+function connectTask() {
+  connect.server({
+    name: 'Exhibition',
+    root: ['dist'],
+    port: 8000,
+    fallback: 'dist/index.html'
+  });
+}
+
 function sassTask(done) {
   gulp.src(SOURCES.sass)
     .pipe(sass())
